@@ -1,0 +1,10 @@
+def recommend_routine(goal):
+    goal = goal.lower()
+    if "weight loss" in goal:
+        return "Do 30 min cardio daily + Calorie deficit diet"
+    elif "muscle" in goal or "gain" in goal:
+        return "Strength training 4x/week + Protein-rich meals"
+    elif "fitness" in goal:
+        return "Mix of cardio and strength workouts + balanced diet"
+    else:
+        return "Start with daily walking and track your meals"

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #74ebd5, #9face6); /* soft gradient */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    /* Container box */
+    .thank-you-box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+    }
+
+    /* Heading */
+    h1 {
+      color: #4CAF50;
+      font-size: 36px;
+    }
+
+    /* Message */
+    p {
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    /* Button to go back (optional) */
+    .home-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .home-btn:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you-box">
+    <h1>Thank You!</h1>
+    <p>Your fitness journey means a lot to us. Stay strong and keep going!</p>
+    <button class="home-btn" onclick="window.location.href='index.html'">Go Home</button>
+  </div>
+</body>
+</html>

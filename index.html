@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+   <h2>Set Your Fitness Goal</h2>
+<input type="text" id="goalInput" placeholder="e.g. Lose weight" />
+<button onclick="setGoal()">Submit</button>
+
+<p id="response"></p>
+<!-- Button to go to thankyou.html -->
+<button onclick="window.location.href='thankyou.html'">Next</button>
+<!-- Button to go to thankyou.html -->
+<button onclick="window.location.href='next.html'">get inspired</button>
+<button onclick="startListening()">🎤 Speak</button>
+<p id="outputText"></p>
+
+<script>
+  function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.start();
+
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById("outputText").innerText = transcript;
+
+      // Send to backend
+      fetch("http://127.0.0.1:5000/api/voice_command", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ command: transcript })
+      })
+      .then(res => res.json())
+      .then(data => speakResponse(data.response));
+    };
+  }
+
+  function speakResponse(text) {
+    const synth = window.speechSynthesis;
+    const utter = new SpeechSynthesisUtterance(text);
+    synth.speak(utter);
+  }
+</script>
+<button onclick="startListening()">🎤 Speak</button>
+<p id="outputText"></p>
+
+<script>
+  function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.start();
+
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById("outputText").innerText = transcript;
+
+      // Send to backend
+      fetch("http://127.0.0.1:5000/api/voice_command", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ command: transcript })
+      })
+      .then(res => res.json())
+      .then(data => speakResponse(data.response));
+    };
+  }
+  function speakResponse(text) {
+    const synth = window.speechSynthesis;
+    const utter = new SpeechSynthesisUtterance(text);
+    synth.speak(utter);
+  }
+</script>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
